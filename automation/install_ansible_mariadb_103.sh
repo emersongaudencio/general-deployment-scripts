@@ -25,7 +25,6 @@ if [ "${verify_pip}" == "pip"* ] ; then
 echo "$verify_pip is installed!"
 else
    cd /opt
-   sudo rm -rf get-pip.py
    sudo wget https://bootstrap.pypa.io/get-pip.py
    sudo python get-pip.py
 fi
