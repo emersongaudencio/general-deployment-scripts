@@ -37,4 +37,4 @@ ansible --version
 cd /opt
 git clone https://github.com/emersongaudencio/ansible-proxysql-for-mysql.git
 cd ansible-proxysql-for-mysql
-sudo sh run_proxysql.sh proxy-local 0 proxysqlchk Test123!dba
+sudo sh run_proxysql.sh proxy-local 0 "proxysqlchk" "Test123?dba"
