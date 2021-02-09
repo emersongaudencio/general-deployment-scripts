@@ -3,16 +3,9 @@
 verify_python=`rpm -qa | grep python-3`
 if [[ "${verify_python}" == "python-3"* ]] ; then
    echo "$verify_python is installed!"
-   #### verify python support packages ####
-   verify_PyYAML=`rpm -qa | grep PyYAML`
-   if [[ "${verify_PyYAML}" == "PyYAML"* ]] ; then
-      echo "$verify_PyYAML is installed!"
-   else
-      yum -y install PyYAML libyaml python-babel  python-cffi  python-enum34 python-idna python-jinja2 python-markupsafe python-paramiko  python-ply  python-pycparser python-six python2-cryptography
-   fi
 else
+   yum -y remove python
    yum -y install python3
-   yum -y install PyYAML libyaml python-babel  python-cffi  python-enum34 python-idna python-jinja2 python-markupsafe python-paramiko  python-ply  python-pycparser python-six python2-cryptography
 fi
 
 #### install git #####
