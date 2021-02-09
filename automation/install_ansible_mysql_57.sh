@@ -4,7 +4,6 @@ verify_python=`rpm -qa | grep python-3`
 if [[ "${verify_python}" == "python-3"* ]] ; then
    echo "$verify_python is installed!"
 else
-   yum -y remove python
    yum -y install python3
 fi
 
@@ -36,4 +35,5 @@ fi
 cd /opt
 git clone https://github.com/emersongaudencio/ansible-mysql-install-standalone.git
 cd ansible-mysql-install-standalone/ansible
+sed -ie 's/python/python3/g' run_mysql_install.sh
 sh run_mysql_install.sh dblocalhost 57
