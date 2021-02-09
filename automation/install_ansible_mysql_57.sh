@@ -24,8 +24,8 @@ else
 fi
 
 #### install pip #####
-verify_pip=`pip -V`
-if [[ "${verify_pip}" == "pip"* ]] ; then
+verify_pip=`pip3 -V`
+if [[ "${verify_pip}" == "pip3"* ]] ; then
    echo "$verify_pip is installed!"
 else
    curl -sS https://bootstrap.pypa.io/get-pip.py | python3
@@ -36,7 +36,7 @@ verify_ansible=`ansible --version`
 if [[ "${verify_ansible}" == "ansible"* ]] ; then
   echo "$verify_ansible is installed!"
 else
-  pip install ansible --upgrade
+  python3 -m pip install ansible
   ansible --version
 fi
 
