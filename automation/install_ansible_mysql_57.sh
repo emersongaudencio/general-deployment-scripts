@@ -24,8 +24,8 @@ else
 fi
 
 #### install pip #####
-verify_pip=`pip3 -V`
-if [[ "${verify_pip}" == "pip3"* ]] ; then
+verify_pip=`pip -V`
+if [[ "${verify_pip}" == "pip"* ]] ; then
    echo "$verify_pip is installed!"
 else
    curl -sS https://bootstrap.pypa.io/get-pip.py | sudo python3
