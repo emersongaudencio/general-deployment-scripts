@@ -43,4 +43,4 @@ fi
 cd /opt
 git clone https://github.com/emersongaudencio/ansible-mysql-install-standalone.git
 cd ansible-mysql-install-standalone/ansible
-sudo sh run_mysql_install.sh dblocalhost 57
+bash run_mysql_install.sh dblocalhost 57
