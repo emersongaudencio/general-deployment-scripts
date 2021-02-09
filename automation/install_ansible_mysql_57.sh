@@ -20,7 +20,7 @@ verify_git=`rpm -qa | grep git-1`
 if [[ "${verify_git}" == "git"* ]] ; then
    echo "$verify_git is installed!"
 else
-   sudo yum install git -y
+   yum install git -y
 fi
 
 #### install pip #####
@@ -28,7 +28,7 @@ verify_pip=`pip -V`
 if [[ "${verify_pip}" == "pip"* ]] ; then
    echo "$verify_pip is installed!"
 else
-   curl -sS https://bootstrap.pypa.io/get-pip.py | sudo python3
+   curl -sS https://bootstrap.pypa.io/get-pip.py | python3
 fi
 
 #### install ansible #####
@@ -36,11 +36,11 @@ verify_ansible=`ansible --version`
 if [[ "${verify_ansible}" == "ansible"* ]] ; then
   echo "$verify_ansible is installed!"
 else
-  sudo python3 -m pip install ansible
-  sudo ansible --version
+  python3 -m pip install ansible
+  ansible --version
 fi
 
 cd /opt
 git clone https://github.com/emersongaudencio/ansible-mysql-install-standalone.git
 cd ansible-mysql-install-standalone/ansible
-bash run_mysql_install.sh dblocalhost 57
+sh run_mysql_install.sh dblocalhost 57
