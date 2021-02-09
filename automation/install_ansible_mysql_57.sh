@@ -28,7 +28,7 @@ verify_pip=`pip3 -V`
 if [[ "${verify_pip}" == "pip3"* ]] ; then
    echo "$verify_pip is installed!"
 else
-   curl -sS https://bootstrap.pypa.io/get-pip.py | python3
+   curl -sS https://bootstrap.pypa.io/get-pip.py | sudo python3
 fi
 
 #### install ansible #####
@@ -36,11 +36,11 @@ verify_ansible=`ansible --version`
 if [[ "${verify_ansible}" == "ansible"* ]] ; then
   echo "$verify_ansible is installed!"
 else
-  python3 -m pip install ansible
-  ansible --version
+  sudo python3 -m pip install ansible
+  sudo ansible --version
 fi
 
 cd /opt
 git clone https://github.com/emersongaudencio/ansible-mysql-install-standalone.git
 cd ansible-mysql-install-standalone/ansible
-sh run_mysql_install.sh dblocalhost 57
+sudo sh run_mysql_install.sh dblocalhost 57
