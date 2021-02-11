@@ -1,12 +1,13 @@
 #!/bin/bash
 #### install python3 #####
-verify_python=`dpkg -l | grep python3-distro-info | awk 'NR==1{print $2}'`
+verify_python=`dpkg -l | grep python3-distutils | awk 'NR==1{print $2}'`
 if [[ "${verify_python}" == "python3"* ]] ; then
    echo "$verify_python is installed!"
 else
    ### installation git client via apt ####
    apt-get update -y
-   apt install python3 -y
+   apt-get install python3 -y
+   apt-get install python3-distutils -y
 fi
 
 #### install git #####
@@ -16,7 +17,7 @@ if [[ "${verify_git}" == "git"* ]] ; then
 else
    ### installation git client via apt ####
    apt-get update -y
-   apt install git -y
+   apt-get install git -y
 fi
 
 #### install pip #####

@@ -1,12 +1,13 @@
 #!/bin/bash
 #### install python3 #####
-verify_python=`dpkg -l | grep python3-distro-info | awk 'NR==1{print $2}'`
+verify_python=`dpkg -l | grep python3-distutils | awk 'NR==1{print $2}'`
 if [[ "${verify_python}" == "python3"* ]] ; then
    echo "$verify_python is installed!"
 else
    ### installation git client via apt ####
    apt-get update -y
-   apt install python3 -y
+   apt-get install python3 -y
+   apt-get install python3-distutils -y
 fi
 
 #### install git #####
@@ -26,7 +27,7 @@ if [[ "${verify_pip}" == "pip"* ]] ; then
    echo "Pip-Path: $(which pip)"
 else
    curl -sS https://bootstrap.pypa.io/get-pip.py | python3
-   source ~/.bashrc
+   exec "$BASH"
    pip -V
    echo "Pip-Path: $(which pip)"
 fi
@@ -38,7 +39,7 @@ if [[ "${verify_ansible}" == "ansible"* ]] ; then
   echo "Ansible-Path: $(which ansible)"
 else
   python3 -m pip install https://github.com/ansible/ansible/archive/stable-2.9.tar.gz
-  source ~/.bashrc
+  exec "$BASH"
   ansible --version
   echo "Ansible-Path: $(which ansible)"
 fi
