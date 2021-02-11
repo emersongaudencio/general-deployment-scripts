@@ -28,6 +28,6 @@ verify_ansible=`ansible --version`
 if [[ "${verify_ansible}" == "ansible"* ]] ; then
   echo "$verify_ansible is installed!"
 else
-  python3 -m pip install --user https://github.com/ansible/ansible/archive/stable-2.9.tar.gz
+  python3 -m pip install https://github.com/ansible/ansible/archive/stable-2.9.tar.gz
   ansible --version
 fi
