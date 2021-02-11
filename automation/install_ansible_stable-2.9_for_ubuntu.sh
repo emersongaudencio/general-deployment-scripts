@@ -1,6 +1,6 @@
 #!/bin/bash
 #### install python3 #####
-verify_python=`dpkg -l | grep python3-distutils | awk 'NR==1{print $2}'`
+verify_python=$(dpkg -l | awk '{print $2}' | grep python3-distutils | awk 'NR==1{print $1}')
 if [[ "${verify_python}" == "python3"* ]] ; then
    echo "$verify_python is installed!"
 else
@@ -11,7 +11,7 @@ else
 fi
 
 #### install git #####
-verify_git=`dpkg -l | grep git | awk 'NR==1{print $2}'`
+verify_git=$(dpkg -l | awk '{print $2}' | grep git | awk 'NR==1{print $1}')
 if [[ "${verify_git}" == "git"* ]] ; then
    echo "$verify_git is installed!"
 else
