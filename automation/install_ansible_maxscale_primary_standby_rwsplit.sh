@@ -1,39 +1,16 @@
 #!/bin/bash
-#### install python3 #####
-verify_python=`rpm -qa | grep python-3`
-if [[ "${verify_python}" == "python-3"* ]] ; then
-   echo "$verify_python is installed!"
-else
-   yum -y install python3
-fi
-
-#### install git #####
-verify_git=`rpm -qa | grep git-1`
-if [[ "${verify_git}" == "git"* ]] ; then
-   echo "$verify_git is installed!"
-else
-   yum install git -y
-fi
-
-#### install pip #####
-verify_pip=`pip -V`
-if [[ "${verify_pip}" == "pip"* ]] ; then
-   echo "$verify_pip is installed!"
-else
-   curl -sS https://bootstrap.pypa.io/get-pip.py | python3
-fi
-
-#### install ansible #####
-verify_ansible=`ansible --version`
-if [[ "${verify_ansible}" == "ansible"* ]] ; then
-  echo "$verify_ansible is installed!"
-else
-  python3 -m pip install ansible
-  ansible --version
-fi
-
+### pre-reqs install ###
 cd /opt
-git clone https://github.com/emersongaudencio/ansible-maxscale-for-mariadb.git
-cd ansible-maxscale-for-mariadb
-sed -ie 's/ansible/\/usr\/local\/bin\/ansible/g' run_maxscale.sh
-sudo sh run_maxscale.sh proxy-local 0 "maxscalechk" "Test123?dba" "monitor_user" "Test123?dba" "dbprimary01.replication.local" "dbstandby01.replication.local"
+curl -s https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_latest.sh -o install_ansible_latest.sh
+sh install_ansible_latest.sh
+
+### maxscale install ###
+if [[ -d "/opt/ansible-maxscale-for-mariadb" ]] ; then
+  echo "Directory /opt/ansible-maxscale-for-mariadb exists."
+else
+  cd /opt
+  git clone https://github.com/emersongaudencio/ansible-maxscale-for-mariadb.git
+  cd ansible-maxscale-for-mariadb
+  sed -ie 's/ansible/\/usr\/local\/bin\/ansible/g' run_maxscale.sh
+  sh run_maxscale.sh proxy-local 0 "maxscalechk" "Test123?dba" "monitor_user" "Test123?dba" "dbprimary01.replication.local" "dbstandby01.replication.local"
+fi
