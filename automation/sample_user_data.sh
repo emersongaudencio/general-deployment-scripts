@@ -1,5 +1,5 @@
 #!/bin/bash
-# mariadb
+# mariadb example
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_mariadb_105.sh | bash
 
 # mysql example
@@ -14,3 +14,9 @@ curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-s
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_latest_for_ubuntu.sh | bash
 
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_stable-2.9_for_ubuntu.sh | bash
+
+# awscli example
+curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_awscli.sh | bash
+
+# terraform example
+curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_terraform.sh | bash

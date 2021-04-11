@@ -47,5 +47,5 @@ else
   git clone https://github.com/emersongaudencio/ansible-oracle-to-mariadb-migration.git
   cd ansible-oracle-to-mariadb-migration
   sed -ie 's/ansible/\/usr\/local\/bin\/ansible/g' run_sqlines.sh
-  bash run_sqlines.sh sqlines-local mysqlines
+  bash run_sqlines.sh sqlines-local migration
 fi
