@@ -20,3 +20,9 @@ curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-s
 
 # terraform example
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_terraform.sh | bash
+
+# centos devops tools
+curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/centos_devops_install.sh | bash
+
+# ubuntu devops tools
+curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/ubuntu_devops_install.sh | bash
