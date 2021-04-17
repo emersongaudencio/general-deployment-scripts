@@ -5,6 +5,9 @@ curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-s
 # mysql example
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_mysql_57.sh | bash
 
+# ps mysql example
+curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_PS_for_mysql_80.sh | bash
+
 # ansible example
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_latest.sh | bash
 
@@ -26,3 +29,7 @@ curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-s
 
 # ubuntu devops tools
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/ubuntu_devops_install.sh | bash
+
+# install mysql 8.0.23 linux64 minimal
+curl -s https://raw.githubusercontent.com/emersongaudencio/linux_packages/master/mysql-8.0.23-linux64-minimal.tgz -o mysql-8.0.23-linux64-minimal.tgz
+tar -xzvf mysql-8.0.23-linux64-minimal.tgz
