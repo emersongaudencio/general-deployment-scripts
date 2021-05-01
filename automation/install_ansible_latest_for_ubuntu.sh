@@ -4,10 +4,11 @@ verify_python=$(dpkg -l | awk '{print $2}' | grep python3-distutils | awk 'NR==1
 if [[ "${verify_python}" == "python3"* ]] ; then
    echo "$verify_python is installed!"
 else
-   ### installation git client via apt ####
-   apt-get update -y
-   apt-get install python3 -y
-   apt-get install python3-distutils -y
+  ### installation git client via apt ####
+  apt-get update -y
+  apt-get install python3 -y
+  apt-get install python3-distutils -y
+  apt-get install python3-venv -y
 fi
 
 #### install git #####
@@ -27,7 +28,7 @@ if [[ "${verify_pip}" == "pip"* ]] ; then
    echo "Pip-Path: $(which pip)"
 else
    curl -sS https://bootstrap.pypa.io/get-pip.py | python3
-   exec "$BASH"
+   source /etc/profile
    pip -V
    echo "Pip-Path: $(which pip)"
 fi
@@ -39,7 +40,7 @@ if [[ "${verify_ansible}" == "ansible"* ]] ; then
   echo "Ansible-Path: $(which ansible)"
 else
   python3 -m pip install ansible
-  exec "$BASH"
+  source /etc/profile
   ansible --version
   echo "Ansible-Path: $(which ansible)"
 fi

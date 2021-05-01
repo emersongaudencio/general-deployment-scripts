@@ -8,6 +8,7 @@ else
    apt-get update -y
    apt-get install python3 -y
    apt-get install python3-distutils -y
+   apt-get install python3-venv -y
 fi
 
 #### install pip #####
@@ -17,7 +18,7 @@ if [[ "${verify_pip}" == "pip"* ]] ; then
    echo "Pip-Path: $(which pip)"
 else
    curl -sS https://bootstrap.pypa.io/get-pip.py | python3
-   exec "$BASH"
+   source /etc/profile
    pip -V
    echo "Pip-Path: $(which pip)"
 fi
@@ -29,7 +30,7 @@ if [[ "${verify_awscli}" == "aws"* ]] ; then
   echo "AWSCLI-Path: $(which aws)"
 else
   python3 -m pip install awscli
-  exec "$BASH"
+  source /etc/profile
   aws --version
   echo "AWSCLI-Path: $(which aws)"
 fi

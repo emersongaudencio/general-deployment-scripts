@@ -36,6 +36,7 @@ curl -s https://raw.githubusercontent.com/emersongaudencio/linux_packages/master
 tar -xzvf mysql-8.0.23-linux64-minimal.tgz
 ln -r -s mysql-8.0.23-linux64-minimal/bin/mysql mysql
 ln -r -s mysql-8.0.23-linux64-minimal/bin/mysqldump mysqldump
+source /etc/profile
 
 # install mysql 8.0.23 linux64 minimal
 cd /usr/local/bin/
@@ -43,3 +44,4 @@ curl -s https://raw.githubusercontent.com/emersongaudencio/linux_packages/master
 tar -xzvf mysqlclient8.tgz
 ln -r -s mysqlclient8/bin/mysql mysql
 ln -r -s mysqlclient8/bin/mysqldump mysqldump
+source /etc/profile
