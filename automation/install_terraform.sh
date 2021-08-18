@@ -18,7 +18,7 @@ else
     cd /opt/terraform
     yum install wget unzip -y
     wget https://releases.hashicorp.com/terraform/0.12.31/terraform_0.12.31_linux_amd64.zip
-    unzip ./terraform_0.12.30_linux_amd64.zip
+    unzip ./terraform_0.12.31_linux_amd64.zip
     mv terraform /usr/local/bin/
     source ~/.bashrc
     terraform -v
@@ -27,7 +27,7 @@ else
     cd /opt/terraform
     yum install wget unzip -y
     wget https://releases.hashicorp.com/terraform/0.13.7/terraform_0.13.7_linux_amd64.zip
-    unzip ./terraform_0.13.6_linux_amd64.zip
+    unzip ./terraform_0.13.7_linux_amd64.zip
     mv terraform /usr/local/bin/
     source ~/.bashrc
     terraform -v
@@ -36,7 +36,7 @@ else
     cd /opt/terraform
     yum install wget unzip -y
     wget https://releases.hashicorp.com/terraform/0.14.11/terraform_0.14.11_linux_amd64.zip
-    unzip ./terraform_0.14.10_linux_amd64.zip
+    unzip ./terraform_0.14.11_linux_amd64.zip
     mv terraform /usr/local/bin/
     source ~/.bashrc
     terraform -v
