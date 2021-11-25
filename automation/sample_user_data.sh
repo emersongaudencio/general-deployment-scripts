@@ -18,6 +18,12 @@ curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-s
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_PS_for_mysql_80.sh | bash
 
 # ps mysql example
+curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_PS_for_mysql_8_0_19.sh | bash
+
+# ps mysql example
+curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_PS_for_mysql_8_0_25.sh | bash
+
+# ps mysql example
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_PS_for_mysql_57.sh | bash
 
 # PG example
