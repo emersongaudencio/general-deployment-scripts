@@ -55,6 +55,12 @@ curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-s
 # ubuntu devops tools
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/ubuntu_devops_install.sh | bash
 
+# clickhouse install
+curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_clickhouse_mysql.sh | bash
+
+# clickhouse mysql replication
+curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_clickhouse_mysql_replication.sh | bash
+
 # install mysql 8.0.23 linux64 minimal
 cd /usr/local/bin/
 curl -s https://raw.githubusercontent.com/emersongaudencio/linux_packages/master/mysql-8.0.23-linux64-minimal.tgz -o mysql-8.0.23-linux64-minimal.tgz
