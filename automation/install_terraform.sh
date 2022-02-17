@@ -50,11 +50,20 @@ else
     source ~/.bashrc
     terraform -v
     echo "Terraform-Path: $(which terraform)"
+  elif [[ "${terraform_version}" == "101" ]] ; then
+    cd /opt/terraform
+    yum install wget unzip -y
+    wget https://releases.hashicorp.com/terraform/1.0.11/terraform_1.0.11_linux_amd64.zip
+    unzip ./terraform_1.0.11_linux_amd64.zip
+    mv terraform /usr/local/bin/
+    source ~/.bashrc
+    terraform -v
+    echo "Terraform-Path: $(which terraform)"
   else
     cd /opt/terraform
     yum install wget unzip -y
-    wget https://releases.hashicorp.com/terraform/1.0.4/terraform_1.0.4_linux_amd64.zip
-    unzip ./terraform_1.0.4_linux_amd64.zip
+    wget https://releases.hashicorp.com/terraform/1.1.6/terraform_1.1.6_linux_amd64.zip
+    unzip ./terraform_1.1.6_linux_amd64.zip
     mv terraform /usr/local/bin/
     source ~/.bashrc
     terraform -v

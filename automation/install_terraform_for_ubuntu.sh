@@ -20,8 +20,8 @@ else
     apt-get update -y
     apt-get install unzip -y
     apt-get install wget -y
-    wget https://releases.hashicorp.com/terraform/0.12.30/terraform_0.12.30_linux_amd64.zip
-    unzip ./terraform_0.12.30_linux_amd64.zip
+    wget https://releases.hashicorp.com/terraform/0.12.31/terraform_0.12.31_linux_amd64.zip
+    unzip ./terraform_0.12.31_linux_amd64.zip
     mv terraform /usr/local/bin/
     exec "$BASH"
     terraform -v
@@ -32,32 +32,52 @@ else
     apt-get update -y
     apt-get install unzip -y
     apt-get install wget -y
-    wget https://releases.hashicorp.com/terraform/0.13.6/terraform_0.13.6_linux_amd64.zip
-    unzip ./terraform_0.13.6_linux_amd64.zip
+    wget https://releases.hashicorp.com/terraform/0.13.7/terraform_0.13.7_linux_amd64.zip
+    unzip ./terraform_0.13.7_linux_amd64.zip
     mv terraform /usr/local/bin/
     exec "$BASH"
     terraform -v
     echo "Terraform-Path: $(which terraform)"
   elif [[ "${terraform_version}" == "14" ]] ; then
     cd /opt/terraform
-    ### installation packages via apt ####
     apt-get update -y
     apt-get install unzip -y
     apt-get install wget -y
-    wget https://releases.hashicorp.com/terraform/0.14.10/terraform_0.14.10_linux_amd64.zip
-    unzip ./terraform_0.14.10_linux_amd64.zip
+    wget https://releases.hashicorp.com/terraform/0.14.11/terraform_0.14.11_linux_amd64.zip
+    unzip ./terraform_0.14.11_linux_amd64.zip
+    mv terraform /usr/local/bin/
+    exec "$BASH"
+    terraform -v
+    echo "Terraform-Path: $(which terraform)"
+  elif [[ "${terraform_version}" == "15" ]] ; then
+    cd /opt/terraform
+    apt-get update -y
+    apt-get install unzip -y
+    apt-get install wget -y
+    wget https://releases.hashicorp.com/terraform/0.15.5/terraform_0.15.5_linux_amd64.zip
+    unzip ./terraform_0.15.5_linux_amd64.zip
+    mv terraform /usr/local/bin/
+    exec "$BASH"
+    terraform -v
+    echo "Terraform-Path: $(which terraform)"
+  elif [[ "${terraform_version}" == "101" ]] ; then
+    cd /opt/terraform
+    apt-get update -y
+    apt-get install unzip -y
+    apt-get install wget -y
+    wget https://releases.hashicorp.com/terraform/1.0.11/terraform_1.0.11_linux_amd64.zip
+    unzip ./terraform_1.0.11_linux_amd64.zip
     mv terraform /usr/local/bin/
     exec "$BASH"
     terraform -v
     echo "Terraform-Path: $(which terraform)"
   else
     cd /opt/terraform
-    ### installation packages via apt ####
     apt-get update -y
     apt-get install unzip -y
     apt-get install wget -y
-    wget https://releases.hashicorp.com/terraform/0.14.10/terraform_0.14.10_linux_amd64.zip
-    unzip ./terraform_0.14.10_linux_amd64.zip
+    wget https://releases.hashicorp.com/terraform/1.1.6/terraform_1.1.6_linux_amd64.zip
+    unzip ./terraform_1.1.6_linux_amd64.zip
     mv terraform /usr/local/bin/
     exec "$BASH"
     terraform -v

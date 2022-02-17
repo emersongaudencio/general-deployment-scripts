@@ -52,6 +52,9 @@ curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-s
 # awscli example
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_awscli.sh | bash
 
+# awscli-v2 example
+curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_awscli-v2.sh | bash
+
 # terraform example
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_terraform.sh | bash
 
@@ -82,3 +85,8 @@ tar -xzvf mysqlclient8.tgz
 ln -r -s mysqlclient8/bin/mysql mysql
 ln -r -s mysqlclient8/bin/mysqldump mysqldump
 source /etc/profile
+
+# password generalor linux/macos
+curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/random_pwd.sh | bash
+
+curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/random_pwd16.sh | bash
