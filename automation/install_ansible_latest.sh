@@ -21,10 +21,15 @@ if [[ "${verify_pip}" == "pip"* ]] ; then
    echo "$verify_pip is installed!"
    echo "Pip-Path: $(which pip)"
 else
-   curl -sS https://bootstrap.pypa.io/get-pip.py | python3
-   source ~/.bashrc
-   pip -V
-   echo "Pip-Path: $(which pip)"
+   verify_python3_version=`python3 --version`
+   if [[ "${verify_python3_version}" == "Python 3.6"* ]] ; then
+     curl -sS https://bootstrap.pypa.io/pip/3.6/get-pip.py | python3
+   else
+     curl -sS https://bootstrap.pypa.io/get-pip.py | python3
+     source ~/.bashrc
+     pip -V
+     echo "Pip-Path: $(which pip)"
+   fi
 fi
 
 #### install ansible #####
