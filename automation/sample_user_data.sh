@@ -58,6 +58,8 @@ curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-s
 # terraform example
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_terraform.sh | bash
 
+curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_terraform.sh | bash -s -- "15"
+
 # centos devops tools
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/centos_devops_install.sh | bash
 
@@ -90,3 +92,7 @@ source /etc/profile
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/random_pwd.sh | bash
 
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/random_pwd16.sh | bash
+
+# tests curl + bash with parameters
+
+curl http://foo.com/script.sh | bash -s arg1 arg2
