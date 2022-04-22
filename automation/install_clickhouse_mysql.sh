@@ -51,10 +51,10 @@ echo $os_version
 if [[ $os_type == "rhel" ]]; then
     if [[ $os_version == "7" ]]; then
       # -------------- For RHEL/CentOS 7 --------------
-      yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+      $(type -p dnf || type -p yum) -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
     elif [[ $os_version == "8" ]]; then
       # -------------- For RHEL/CentOS 8 --------------
-      yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+      $(type -p dnf || type -p yum) -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     fi
 # yum -y install epel-release
 fi
@@ -73,20 +73,18 @@ else
    /usr/sbin/setenforce 0
 
    ### install pre-packages ####
-   yum -y install screen nload bmon openssl libaio rsync snappy net-tools wget nmap htop dstat sysstat
-
-   ### Installation Clickhouse via yum ###
-   curl -s https://packagecloud.io/install/repositories/Altinity/altinity-stable/script.rpm.sh | sudo bash
-   yum -y install clickhouse-client clickhouse-server
+   $(type -p dnf || type -p yum) -y install screen nload bmon openssl libaio rsync snappy net-tools wget nmap htop dstat sysstat
 
    ### Installation MARIADB via yum ####
    curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
-   yum -y install MariaDB-client
+   $(type -p dnf || type -p yum) -y install MariaDB-client
 
-   ### Percona #####
-   ### https://www.percona.com/doc/percona-server/LATEST/installation/yum_repo.html
-   yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm -y
-   yum -y install percona-toolkit sysbench
+   ### Installation Clickhouse via yum ###
+   $(type -p dnf || type -p yum) -y install curl gnupg2
+   curl https://builds.altinity.cloud/yum-repo/altinity.repo -o /etc/yum.repos.d/altinity.repo
+
+   version=21.8.13.1.altinitystable
+   $(type -p dnf || type -p yum) -y install clickhouse-common-static-$version clickhouse-server-$version clickhouse-client-$version
 
    ##### CONFIG PROFILE #############
    check_profile=$(cat /etc/profile | grep '# clickhouse-pre-reqs' | wc -l)
