@@ -35,6 +35,12 @@ curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-s
 # PG example
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_PG_12.sh | bash
 
+# PG example
+curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_PG_13.sh | bash
+
+# PG example
+curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_PG_14.sh | bash
+
 # ansible example
 curl -sS https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_latest.sh | bash
 

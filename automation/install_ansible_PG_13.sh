@@ -12,5 +12,5 @@ else
   git clone https://github.com/emersongaudencio/ansible-postgresql-install-standalone.git
   cd ansible-postgresql-install-standalone/ansible
   sed -ie 's/ansible/\/usr\/local\/bin\/ansible/g' run_postgresql_install.sh
-  sh run_postgresql_install.sh dblocalhost 12
+  sh run_postgresql_install.sh dblocalhost 13
 fi
