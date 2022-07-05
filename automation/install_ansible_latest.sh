@@ -49,8 +49,8 @@ echo $os_type
 echo $os_version
 
 #### install python3 #####
-verify_python=`rpm -qa | grep python3-3`
-if [[ "${verify_python}" == "python3-3"* ]] ; then
+verify_python=$(/usr/local/bin/python3.9 --version)
+if [[ "${verify_python}" == "Python3"* ]] ; then
    echo "$verify_python is installed!"
 else
    ####### PACKAGES ###########################
@@ -59,64 +59,45 @@ else
          # -------------- For RHEL/CentOS 7 --------------
          #### install python3 #####
          cd /opt
-         yum install wget gcc openssl-devel libffi-devel bzip2-devel -y
+         $(type -p dnf || type -p yum) install wget gcc openssl-devel libffi-devel bzip2-devel -y
          wget https://www.python.org/ftp/python/3.9.13/Python-3.9.13.tgz
          tar xzvf ./Python-3.9.13.tgz
          cd ./Python-3.9.13
          ./configure --enable-optimizations
          make altinstall
 
-         python3.9 --version
-         pip3.9 --version
-         /usr/local/bin/python3.9 -m pip install --upgrade pip
+         $(type -p python3.9 || type -p python3) --version
+         $(type -p pip3.9 || type -p pip3) --version
+         $(type -p python3.9 || type -p python3) -m pip install --upgrade pip
        elif [[ $os_version == "8" ]]; then
          # -------------- For RHEL/CentOS 8 --------------
-         yum -y install python39
+         $(type -p dnf || type -p yum) install python39 -y
+         $(type -p python3.9 || type -p python3) --version
+         $(type -p pip3.9 || type -p pip3) --version
+         $(type -p python3.9 || type -p python3) -m pip install --upgrade pip
        fi
    fi
 fi
 
 #### install git #####
-verify_git=`rpm -qa | grep git-1`
+verify_git=$(git --help)
 if [[ "${verify_git}" == "git"* ]] ; then
    echo "$verify_git is installed!"
 else
-   yum install git -y
-fi
-
-#### install pip #####
-verify_pip=`pip -V`
-if [[ "${verify_pip}" == "pip"* ]] ; then
-   echo "$verify_pip is installed!"
-   echo "Pip-Path: $(which pip)"
-else
-     curl -sS https://bootstrap.pypa.io/get-pip.py | python3.9
-     source ~/.bashrc
-     pip -V
-     echo "Pip-Path: $(which pip)"
+   $(type -p dnf || type -p yum) install git -y
 fi
 
 #### install ansible #####
-verify_ansible=`ansible --version`
+verify_ansible=$(ansible --version)
 if [[ "${verify_ansible}" == "ansible"* ]] ; then
   echo "$verify_ansible is installed!"
   echo "Ansible-Path: $(which ansible)"
 else
-
   ####### PACKAGES ###########################
   if [[ $os_type == "rhel" ]]; then
-      if [[ $os_version == "7" ]]; then
-        # -------------- For RHEL/CentOS 7 --------------
-        python3.9 -m pip install ansible
-        source ~/.bashrc
-        ansible --version
-        echo "Ansible-Path: $(which ansible)"
-      elif [[ $os_version == "8" ]]; then
-        # -------------- For RHEL/CentOS 8 --------------
-        python3.9 -m pip install ansible
-        source ~/.bashrc
-        ansible --version
-        echo "Ansible-Path: $(which ansible)"
-      fi
+    $(type -p python3.9 || type -p python3) -m pip install ansible
+    source ~/.bashrc
+    $(which ansible) --version
+    echo "Ansible-Path: $(which ansible)"
   fi
 fi
