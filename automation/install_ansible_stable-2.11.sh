@@ -49,8 +49,8 @@ echo $os_type
 echo $os_version
 
 #### install python3 #####
-verify_python=`rpm -qa | grep python3-3`
-if [[ "${verify_python}" == "python3-3"* ]] ; then
+verify_python=`python3 --version`
+if [[ "${verify_python}" == "Python"* ]] ; then
    echo "$verify_python is installed!"
 else
    ####### PACKAGES ###########################
@@ -69,6 +69,12 @@ else
          python3.9 --version
          pip3.9 --version
          /usr/local/bin/python3.9 -m pip install --upgrade pip
+
+         cd /usr/local/bin/
+         ln -r -s /usr/local/bin/python3.9 python3
+         source /etc/profile
+         python3 --version
+         echo "Python-Path: $(which python3)"
        elif [[ $os_version == "8" ]]; then
          # -------------- For RHEL/CentOS 8 --------------
          yum -y install python39
