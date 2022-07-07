@@ -52,6 +52,7 @@ echo $os_version
 verify_python=`python3 --version`
 if [[ "${verify_python}" == "Python"* ]] ; then
    echo "$verify_python is installed!"
+   echo "Python-Path: $(which python3)"
 else
    ####### PACKAGES ###########################
    if [[ $os_type == "rhel" ]]; then
@@ -78,6 +79,7 @@ else
        elif [[ $os_version == "8" ]]; then
          # -------------- For RHEL/CentOS 8 --------------
          yum -y install python39
+         echo "Python-Path: $(which python3)"
        fi
    fi
 fi

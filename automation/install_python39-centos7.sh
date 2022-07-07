@@ -11,4 +11,9 @@ make altinstall
 python3.9 --version
 pip3.9 --version
 /usr/local/bin/python3.9 -m pip install --upgrade pip
-# pip3.9 install awscli
+
+cd /usr/local/bin/
+ln -r -s /usr/local/bin/python3.9 python3
+source /etc/profile
+python3 --version
+echo "Python-Path: $(which python3)"
