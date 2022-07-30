@@ -71,13 +71,24 @@ else
     exec "$BASH"
     terraform -v
     echo "Terraform-Path: $(which terraform)"
-  else
+  elif [[ "${terraform_version}" == "111" ]] ; then
     cd /opt/terraform
     apt-get update -y
     apt-get install unzip -y
     apt-get install wget -y
     wget https://releases.hashicorp.com/terraform/1.1.6/terraform_1.1.6_linux_amd64.zip
     unzip ./terraform_1.1.6_linux_amd64.zip
+    mv terraform /usr/local/bin/
+    exec "$BASH"
+    terraform -v
+    echo "Terraform-Path: $(which terraform)"
+  else
+    cd /opt/terraform
+    apt-get update -y
+    apt-get install unzip -y
+    apt-get install wget -y
+    wget https://releases.hashicorp.com/terraform/1.2.6/terraform_1.2.6_linux_amd64.zip
+    unzip ./terraform_1.2.6_linux_amd64.zip
     mv terraform /usr/local/bin/
     exec "$BASH"
     terraform -v
