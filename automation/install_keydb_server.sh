@@ -73,7 +73,14 @@ else
    /usr/sbin/setenforce 0
    # disable transparent huge pages
    echo "echo never > /sys/kernel/mm/transparent_hugepage/enabled" >> /etc/rc.local
-   echo never > /sys/kernel/mm/transparent_hugepage/enabled
+   echo "echo never > /sys/kernel/mm/transparent_hugepage/defrag" >> /etc/rc.local
+
+   if test -f /sys/kernel/mm/transparent_hugepage/enabled; then
+     echo never > /sys/kernel/mm/transparent_hugepage/enabled
+   fi
+   if test -f /sys/kernel/mm/transparent_hugepage/defrag; then
+     echo never > /sys/kernel/mm/transparent_hugepage/defrag
+   fi
 
    ### install pre-packages ####
    $(type -p dnf || type -p yum) -y install screen nload bmon openssl libaio rsync snappy net-tools wget nmap htop dstat sysstat curl gnupg2
