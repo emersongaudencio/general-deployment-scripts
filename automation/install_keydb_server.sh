@@ -72,8 +72,9 @@ else
    # disable selinux on the fly
    /usr/sbin/setenforce 0
    # disable transparent huge pages
-   echo "echo never > /sys/kernel/mm/transparent_hugepage/enabled" >> /etc/rc.local
-   echo "echo never > /sys/kernel/mm/transparent_hugepage/defrag" >> /etc/rc.local
+   echo "echo never > /sys/kernel/mm/transparent_hugepage/enabled" >> /etc/rc.d/rc.local
+   echo "echo never > /sys/kernel/mm/transparent_hugepage/defrag" >> /etc/rc.d/rc.local
+   chmod +x /etc/rc.d/rc.local
 
    if test -f /sys/kernel/mm/transparent_hugepage/enabled; then
      echo never > /sys/kernel/mm/transparent_hugepage/enabled
