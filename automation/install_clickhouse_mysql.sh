@@ -3,7 +3,7 @@
 os_type=
 # os_version as demanded by the OS (codename, major release, etc.)
 os_version=
-supported="Only RHEL/CentOS 7 & 8 are supported for this installation process."
+supported="Only RHEL/CentOS 7 & 8 & 9 are supported for this installation process."
 
 msg(){
     type=$1 #${1^^}
@@ -30,6 +30,7 @@ identify_os(){
             6*) os_version=6 ; error "RHEL/CentOS 6 is no longer supported" "$supported" ;;
             7*) os_version=7 ;;
             8*) os_version=8 ;;
+            9*) os_version=9 ;;
              *) error "Detected RHEL or compatible but version ($el_version) is not supported." "$supported"  "$otherplatforms" ;;
          esac
          if [[ $arch == aarch64 ]] && [[ $os_version != 7 ]]; then error "Only RHEL/CentOS 7 are supported for ARM64. Detected version: '$os_version'"; fi
@@ -55,6 +56,9 @@ if [[ $os_type == "rhel" ]]; then
     elif [[ $os_version == "8" ]]; then
       # -------------- For RHEL/CentOS 8 --------------
       $(type -p dnf || type -p yum) -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    elif [[ $os_version == "9" ]]; then
+      # -------------- For RHEL/CentOS 8 --------------
+      $(type -p dnf || type -p yum) -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
     fi
 # yum -y install epel-release
 fi
@@ -83,8 +87,9 @@ else
    $(type -p dnf || type -p yum) -y install curl gnupg2
    curl https://builds.altinity.cloud/yum-repo/altinity.repo -o /etc/yum.repos.d/altinity.repo
 
-   version=21.8.13.1.altinitystable
-   $(type -p dnf || type -p yum) -y install clickhouse-common-static-$version clickhouse-server-$version clickhouse-client-$version
+   #version=21.8.13.1.altinitystable
+   #$(type -p dnf || type -p yum) -y install clickhouse-common-static-$version clickhouse-server-$version clickhouse-client-$version
+   $(type -p dnf || type -p yum) -y install clickhouse-common-static clickhouse-server clickhouse-client
 
    ##### CONFIG PROFILE #############
    check_profile=$(cat /etc/profile | grep '# clickhouse-pre-reqs' | wc -l)

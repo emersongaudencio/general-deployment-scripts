@@ -1,8 +1,8 @@
 #!/bin/bash
 ### pre-reqs install ###
 cd /opt
-curl -s https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_stable-2.10.sh -o install_ansible_stable-2.10.sh
-sh install_ansible_stable-2.10.sh
+curl -s https://raw.githubusercontent.com/emersongaudencio/general-deployment-scripts/master/automation/install_ansible_latest.sh -o install_ansible_latest.sh
+sh install_ansible_latest.sh
 
 ### mysql install ###
 if [[ -d "/opt/ansible-mysql-install-standalone" ]] ; then

@@ -4,7 +4,7 @@
 os_type=
 # os_version as demanded by the OS (codename, major release, etc.)
 os_version=
-supported="Only RHEL/CentOS 7 & 8 are supported for this installation process."
+supported="Only RHEL/CentOS 7 & 8 & 9 are supported for this installation process."
 
 msg(){
     type=$1 #${1^^}
@@ -31,6 +31,7 @@ identify_os(){
             6*) os_version=6 ; error "RHEL/CentOS 6 is no longer supported" "$supported" ;;
             7*) os_version=7 ;;
             8*) os_version=8 ;;
+            9*) os_version=9 ;;
              *) error "Detected RHEL or compatible but version ($el_version) is not supported." "$supported"  "$otherplatforms" ;;
          esac
          if [[ $arch == aarch64 ]] && [[ $os_version != 7 ]]; then error "Only RHEL/CentOS 7 are supported for ARM64. Detected version: '$os_version'"; fi
@@ -80,6 +81,10 @@ else
          # -------------- For RHEL/CentOS 8 --------------
          yum -y install python39
          echo "Python-Path: $(which python3)"
+       elif [[ $os_version == "9" ]]; then
+         # -------------- For RHEL/CentOS 8 --------------
+         yum -y install python39
+         echo "Python-Path: $(which python3)"
        fi
    fi
 fi
@@ -120,6 +125,12 @@ else
         ansible --version
         echo "Ansible-Path: $(which ansible)"
       elif [[ $os_version == "8" ]]; then
+        # -------------- For RHEL/CentOS 8 --------------
+        python3.9 -m pip install https://github.com/ansible/ansible/archive/stable-2.11.tar.gz
+        source ~/.bashrc
+        ansible --version
+        echo "Ansible-Path: $(which ansible)"
+      elif [[ $os_version == "9" ]]; then
         # -------------- For RHEL/CentOS 8 --------------
         python3.9 -m pip install https://github.com/ansible/ansible/archive/stable-2.11.tar.gz
         source ~/.bashrc

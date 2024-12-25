@@ -9,7 +9,7 @@ echo $test_user
 if [ "$test_user" != "" ] ; then
         echo user $user exists
 else
-        echo user $user doesn\'t exists, creating $user right now!
+        echo user $user doesn\'t exists, creating $user user right now!
         adduser $user
 fi
 
@@ -35,6 +35,7 @@ if [[ "${verify_unzip}" == "unzip"* ]] ; then
    echo "$verify_unzip is installed!"
 else
    yum install unzip -y
+   yum install libnsl -y
 fi
 
 # unzip downloaded files
